@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<nav>
+    <div class="logo">
+        <h5>Pinterest</h5>
+
+    </div>
+    <ul class="navLink">
+        <li><a href="/update">Update</a></li>
+        <li><a href="/feed">Feed</a></li>
+    </ul>
+
+</nav>
+<div class="box">
+    <div class="profile">
+
+        <div id="dpPicker">
+            <i class="fa-solid fa-camera" id="camera"></i>
+            <form hidden action="/dpUploads" method="post" id="dpform" enctype="multipart/form-data">
+                <input type="file" name="dp">
+            </form>
+        </div>
+    
+        <div class="profile-picture">
+            <img src="/images/uploads/<%= user.dpImage %>"
+            alt="Profile Picture">
+        </div>
+        <h2 class="name"><%= user.username %></h2>
+        <h3 class="username"><%= user.email %></h3>
+        <br>
+        <br>
+        
+        <a href="/logout" class="button">Logout</a>
+        <a href="/CreatePost" class="button2">Create A Post</a>
+        
+    </div>
+
+    <% for(var i=0; i < user.postId.length; i++){ %>
+        <div class="card d-inline-flex flex card2" style="width: 18rem;" data-post-id="<%= user.postId[i]._id %>">
+            <img src = "/images/uploads/<%= user.postId[i].imageUrl %>" class="card-img-top" alt="Image">
+            <div class="card-body flex2">
+                <h5 class="card-title"><%= user.postId[i].caption %></h5>
+                <i class="fa-solid fa-trash icons" ></i>
+            </div>
+        </div>
+    <% } %>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"crossorigin="anonymous"></script>
+
+<script src="https://kit.fontawesome.com/46ca31bb70.js" crossorigin="anonymous"></script>
+
+<script>
+    var form = document.getElementById('dpform');
+    var camera = document.getElementById('camera');
+
+    camera.addEventListener('click',function(){
+        form.querySelector('input').click();
+    })
+
+    form.querySelector('input').addEventListener('change',function(){
+        form.submit();
+    })
+    
+    var icons = document.getElementsByClassName('icons');
+
+    Array.from(icons).forEach(icon =>{
+        icon.addEventListener('click',function(){
+
+            var parent2 = icon.parentElement;
+            var parent1 = parent2.parentElement;
+            var id = parent1.getAttribute('data-post-id');
+
+            fetch(`/deletePost/${id}`, {
+                method: 'POST',
+            })
+                .then(response => {
+                    if (!response.ok) 
+                    {
+                        throw new Error('Network response was not ok');
+                    }
+                    location.reload();
+                })
+        });
+    })
+</script>
+
+</body>
+</html>

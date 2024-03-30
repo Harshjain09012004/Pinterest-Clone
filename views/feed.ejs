@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <link rel="stylesheet" href="/stylesheets/feed.css">
+</head>
+<body>
+    <body>
+        <nav>
+            <div class="logo">
+                <h5>Pinterest</h5>
+    
+            </div>
+            <form action="/search" method="post" id="searchbar">
+                <input type="text" name="username" placeholder="Search User" required>
+                <i class="fas fa-search authors" style="color: #dbeaff;" id="submitbtn"></i>
+            </form>
+            
+            <ul class="navLink">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+
+        </nav>
+    
+        <header>
+            <h1>Your Feed</h1>
+        </header>
+    
+    
+        <div class="container">
+
+            <% for(var i=0; i< postData.length ;i++){ %>
+    
+                <div class="box">
+                    <a href="/images/uploads/<%= postData[i].imageUrl %>">
+                        <img src="/images/uploads/<%= postData[i].imageUrl %>" alt="image"></a>
+                    <div class="caption"> <%= postData[i].caption %> </div>
+                    <div class="author"><%= postData[i].userId.username %></div>
+                </div>
+
+            <% } %>
+    
+        </div>
+    
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="app.js"></script>
+        <script src="https://kit.fontawesome.com/46ca31bb70.js" crossorigin="anonymous"></script>
+        <script>
+            var submitbtn = document.getElementById('submitbtn');
+
+            submitbtn.addEventListener('click',function(){
+                var searchform = document.getElementById('searchbar');
+
+                searchform.submit();
+            })
+
+              var authors = document.getElementsByClassName('author');
+
+                Array.from(authors).forEach(author => {
+                    author.addEventListener('click', function () {
+
+                        var user = author.innerHTML;
+                        fetch(`/SearchPost/${user}`, {
+                            method: 'POST',
+                        })
+                         .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                return response.json();
+
+                            })
+
+                            
+                    });
+                })
+        </script>
+
+    </body>
+
+</body>
+</html>

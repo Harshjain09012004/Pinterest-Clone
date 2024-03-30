@@ -1,0 +1,114 @@
+body{
+    background-color: #353535;
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    max-height: 8vh;
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+    z-index: 1;
+    opacity: 0.9;
+}
+
+h5 {
+    color: #49ffd0;
+    letter-spacing: 25px;
+    font-size: 20px;
+    background-color: #000000;
+}
+
+.navLink {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    background-color: #000000;
+}
+
+.navLink li {
+    list-style: none;
+    background-color: #000000;
+}
+
+.navLink a {
+    color: aquamarine;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 16px;
+    background-color: #000000;
+}
+
+.navLink a:hover {
+    color: #588275;
+}
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: background-color 0.3s;
+    width: 150px;
+}
+input{
+    width: 250px;
+    height: 25px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+input[type=file]::file-selector-button {
+    padding: .2em .4em;
+    border-radius: .2em;
+    background-color: #bbb8e4;
+    transition: .1s;
+}
+
+input[type=file]::file-selector-button:hover {
+    
+    background-color: #787694;
+}
+
+.logo {
+    color: #49ffd0;
+    letter-spacing: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    background-color: #000000;
+}
+h1{
+    margin: 15vh;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+label{
+    font-weight: bold;
+    font-size: 20px;
+    color: greenyellow;
+    letter-spacing: 7px;
+    background-color:#415179;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

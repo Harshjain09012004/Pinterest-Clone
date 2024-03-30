@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #262626;
+    box-sizing: border-box;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad          Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+}
+
+:root {
+    --bg: #EDF2F0;
+    --bg-main: #2e3032;
+    --neu-1: #ecf0f3;
+    --neu-2: #d1d9e6;
+    --white: #f9f9f9;
+    --gray: #a0a5a8;
+    --black: #181818;
+    --purple: #3a65e6;
+    --transition: 1.25s;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.logo {
+    color: #49ffd0;
+    letter-spacing: 25px;
+    font-size: 20px;
+    background-color: #000000;
+}
+
+.navLink {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    background-color: #000000;
+}
+
+.navLink li {
+    list-style: none;
+    background-color: #000000;
+}
+
+.navLink a {
+    color: aquamarine;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 16px;
+    background-color: #000000;
+}
+
+.navLink a:hover {
+    color: #588275;
+}
+
+.lines {
+    display: none;
+    cursor: crosshair;
+}
+
+.lines div {
+    width: 25px;
+    height: 3px;
+    background-color: aquamarine;
+    margin: 5px;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    padding-top: 17vh;
+}
+
+.container {
+    padding-top: 13vh;
+    width: 1400px;
+    margin: auto;
+    columns: 6;
+    column-gap: 20px;
+
+}
+
+.container .box {
+    width: 100%;
+    margin-bottom: 15px;
+    break-inside: avoid;
+    border-radius: 15px;
+}
+input[type = text]{
+    width: 200px;
+    height: 30px;
+    margin: 4px 0;
+    padding-left: 25px;
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--neu-1);
+    transition: 0.25s ease;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 4px var(--neu-2), inset -2px -2px 4px var(--white);
+}
+
+form{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.author:hover{
+    cursor: pointer;
+}
+.icons {
+    transition: font-size 0.05s ease 0s;
+    background-color: black;
+    font-size: 20px;
+
+}
+
+.icons:active {
+    font-size: 22px;
+}
+
+.container .box img {
+    max-width: 100%;
+    min-width: 100%;
+    border-radius: 10px;
+}
+
+.author{
+    color: rgb(103, 102, 102);
+    font-size: 12px;
+}
+img:hover {
+
+    opacity: .95;
+    box-shadow: 0 0 10px #fff;
+}
+
+.caption {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2px;
+}
+
+@media (max-width: 1427px) {
+    .container {
+        columns: 5;
+        width: calc(100% - 40px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        columns: 4;
+    }
+}
+
+@media (max-width: 1000px) {
+    .container {
+        columns: 3;
+    }
+
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .navLink {
+        position: absolute;
+        right: 0px;
+        height: 90vh;
+        top: 10vh;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in;
+        opacity: 0.9;
+    }
+
+    .navLink li {
+        opacity: 1;
+    }
+
+    .lines {
+        display: block;
+    }
+
+    .nav-active {
+        transform: translateX(0%);
+    }
+
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+
+    .toggle .l1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .toggle .l2 {
+        opacity: 0;
+    }
+
+    .toggle .l3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+@media (max-width: 786px) {
+    .container {
+        columns: 2;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        columns: 1;
+    }
+}
